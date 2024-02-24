@@ -56,3 +56,14 @@ def check_ship_fit(SHIP_LENGTH, row, column, orientation):
             return False
         else:
             return True
+
+def ship_overlaps(board, row, column, orientation, ship_length):
+    if orientation == "H":
+        for i in range(column, column + ship_length):
+            if board[row][i] == "X":
+                return True
+    else:
+        for i in range(row, row + ship_length):
+            if board[i][column] == "X":
+                return True
+    return False
