@@ -68,7 +68,7 @@ def ship_overlaps(board, row, column, orientation, ship_length):
                 return True
     return False
 
-def user_input():
+def user_input(place_ship):
     if place_ship == True:
         while True:
             try:
