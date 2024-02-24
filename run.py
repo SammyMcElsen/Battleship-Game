@@ -121,3 +121,47 @@ def count_hit_ships(board):
                 count += 1
     return count
 
+def turn(board):
+    if board == PLAYER_GUESS_BOARD:
+        row, column = user_input(PLAYER_GUESS_BOARD)
+        if board[row][column] == "-":
+            turn(board)
+        elif board[row][column] == "X":
+            turn(board)
+        elif COMPUTER_BOARD[row][column] == "X":
+            board[row][column] = "X"
+        else:
+            board[row][column] = "-"
+    else:
+        row, column = random.randint(0,7), random.randint(0,7)
+        if board[row][column] == "-":
+            turn(board)
+        elif board[row][column] == "X":
+            turn(board)
+        elif PLAYER_BOARD[row][column] == "X":
+            board[row][column] = "X"
+        else:
+            board[row][column] = "-"
+
+place_ships(COMPUTER_BOARD)
+print_board(COMPUTER_BOARD)
+print_board(PLAYER_BOARD)
+place_ships(PLAYER_BOARD)
+
+while True:
+    while True:
+        print('Guess your opponents battleship location')
+        print_board(PLAYER_GUESS_BOARD)
+        turn(PLAYER_GUESS_BOARD)
+        break
+    if count_hit_ships(PLAYER_GUESS_BOARD) == 17:
+        print("Congratulations, You Won!")
+        break
+    while True:
+        turn(COMPUTER_GUESS_BOARD)
+        break
+    print(COMPUTER_GUESS_BOARD)
+    if count_hit_ships(COMPUTER_GUESS_BOARD) == 17:
+        print("Sorry, You Lost!")
+        break
+    
