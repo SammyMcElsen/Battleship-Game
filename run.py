@@ -94,3 +94,21 @@ def user_input():
             except KeyError:
                 print('Please enter a valid column letter: A - H')
         return row, column, orientation
+    else:
+        while True:
+            try:
+                row = input("Guess in which row the opponents ship is (1-8): ")
+                if row in '12345678':
+                    row = int(row) - 1
+                    break
+            except ValueError:
+                print('Please enter a valid row number: 1 - 8')
+        while True:
+            try:
+                column = input("Guess in which column the opponents ship is (A-H)").upper()
+                if column in 'ABCDEFGH':
+                    column = LETTERS_TO_NUMBERS[column]
+                    break
+            except KeyError:
+                print('Please enter a valid column letter: A - H')
+        return row, column
