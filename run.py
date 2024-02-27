@@ -144,12 +144,11 @@ def turn(board):
             board[row][column] = "-"
 
 place_ships(COMPUTER_BOARD)
-print_board(COMPUTER_BOARD)
 print_board(PLAYER_BOARD)
 place_ships(PLAYER_BOARD)
 
 while True:
-    while True:
+    if True:
         print('Guess your opponents battleship location')
         print_board(PLAYER_GUESS_BOARD)
         turn(PLAYER_GUESS_BOARD)
@@ -157,10 +156,9 @@ while True:
     if count_hit_ships(PLAYER_GUESS_BOARD) == 17:
         print("Congratulations, You Won!")
         break
-    while True:
+    if True:
         turn(COMPUTER_GUESS_BOARD)
         break
-    print(COMPUTER_GUESS_BOARD)
     if count_hit_ships(COMPUTER_GUESS_BOARD) == 17:
         print("Sorry, You Lost!")
         break
