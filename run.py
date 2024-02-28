@@ -45,16 +45,18 @@ def place_ships(board):
                         print_board(PLAYER_BOARD)
                         break
 
-def check_ship_fit(SHIP_LENGTH, row, column, orientation, PLAYER_BOARD):
+def check_ship_fit(SHIP_LENGTH, row, column, orientation,board):
     if orientation == "H":
         if column + SHIP_LENGTH > 8:
-            print("Sorry, your ship can't be placed in this row, because it would overlap from the board")
+            if board == PLAYER_BOARD:
+                print("Sorry, your ship can't be placed in this row, because it would overlap from the board")
             return False
         else:
             return True
     else:
         if row + SHIP_LENGTH > 8:
-            print("Sorry, your ship can't be placed in this column, because it would overlap from the board")
+            if board == PLAYER_BOARD:
+                print("Sorry, your ship can't be placed in this column, because it would overlap from the board")
             return False
         else:
             return True
@@ -63,13 +65,15 @@ def ship_overlaps(board, row, column, orientation, ship_length):
     if orientation == "H":
         for i in range(column, column + ship_length):
             if board[row][i] == "X":
+                if board == PLAYER_BOARD:
+                    print("Sorry, your ship can't be placed in this row, because it would overlap from the board")
                 return True
     else:
         for i in range(row, row + ship_length):
             if board[i][column] == "X":
+                    if board == PLAYER_BOARD:
+                        print("Sorry, your ship can't be placed in this row, because it would overlap from the board")
                 return True
-    if board == PLAYER_BOARD:
-        print("Sorry, your ship can't be placed here, because it would overlap with another ship")
     return False
 
 def user_input(place_ship):
