@@ -71,45 +71,40 @@ def ship_overlaps(board, row, column, orientation, ship_length):
 def user_input(place_ship):
     if place_ship == True:
         while True:
-            try:
                 orientation = input("Choose the orientation of your ship (H or V): \n").upper()
                 if orientation == "H" or orientation == "V":
                     break
-            except TypeError:
+                else:
                 print('Please enter a valid orientation: H or V')
         while True:
-            try:
                 row = input("Enter the row number in which you want to place your ship (1-8): \n")
                 if row in '12345678':
                     row = int(row) - 1
                     break
-            except ValueError:
+                else:
                 print("Please enter a valid number: 1 - 8")
         while True:
-            try:
                 column = input("Enter the column in which you want to place your ship (A-H): \n").upper()
                 if column in 'ABCDEFGH':
                     column = LETTERS_TO_NUMBERS[column]
                     break
-            except KeyError:
+                else:
                 print('Please enter a valid column letter: A - H')
         return row, column, orientation
     else:
         while True:
-            try:
                 row = input("Guess in which row the opponents ship is (1-8): \n")
                 if row in '12345678':
                     row = int(row) - 1
                     break
-            except ValueError:
+                else:
                 print('Please enter a valid row number: 1 - 8')
         while True:
-            try:
                 column = input("Guess in which column the opponents ship is (A-H) \n").upper()
                 if column in 'ABCDEFGH':
                     column = LETTERS_TO_NUMBERS[column]
                     break
-            except KeyError:
+                else:
                 print('Please enter a valid column letter: A - H')
         return row, column
 
