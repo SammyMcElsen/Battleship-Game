@@ -75,21 +75,21 @@ def user_input(place_ship):
                 if orientation == "H" or orientation == "V":
                     break
                 else:
-                print('Please enter a valid orientation: H or V')
+                    print('Please enter a valid orientation: H or V')
         while True:
                 row = input("Enter the row number in which you want to place your ship (1-8): \n")
                 if row in '12345678':
                     row = int(row) - 1
                     break
                 else:
-                print("Please enter a valid number: 1 - 8")
+                    print("Please enter a valid number: 1 - 8")
         while True:
                 column = input("Enter the column in which you want to place your ship (A-H): \n").upper()
                 if column in 'ABCDEFGH':
                     column = LETTERS_TO_NUMBERS[column]
                     break
                 else:
-                print('Please enter a valid column letter: A - H')
+                    print('Please enter a valid column letter: A - H')
         return row, column, orientation
     else:
         while True:
@@ -98,14 +98,14 @@ def user_input(place_ship):
                     row = int(row) - 1
                     break
                 else:
-                print('Please enter a valid row number: 1 - 8')
+                    print('Please enter a valid row number: 1 - 8')
         while True:
                 column = input("Guess in which column the opponents ship is (A-H) \n").upper()
                 if column in 'ABCDEFGH':
                     column = LETTERS_TO_NUMBERS[column]
                     break
                 else:
-                print('Please enter a valid column letter: A - H')
+                    print('Please enter a valid column letter: A - H')
         return row, column
 
 def count_hit_ships(board):
