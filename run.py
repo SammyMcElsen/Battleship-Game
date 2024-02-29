@@ -144,7 +144,6 @@ def turn(board):
             board[row][column] = "-"
 
 place_ships(COMPUTER_BOARD)
-print_board(COMPUTER_BOARD)
 print_board(PLAYER_BOARD)
 place_ships(PLAYER_BOARD)
         
@@ -159,8 +158,7 @@ while True:
         break   
     while True:
         turn(COMPUTER_GUESS_BOARD)
-        break           
-    print_board(COMPUTER_GUESS_BOARD)   
+        break            
     if count_hit_ships(COMPUTER_GUESS_BOARD) == 17:
         print("Sorry, the computer won.")
         break
