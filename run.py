@@ -22,7 +22,7 @@ def place_ships(board):
                 orientation, row, column = random.choice(["H", "V"]), random.randint(0,7), random.randint(0,7)
                 if check_ship_fit(ship_length, row, column, orientation, 'computer'):
                     print(ship_length, row, column, orientation)
-                    if ship_overlaps('computer', row, column, orientation, ship_length) == False:
+                    if ship_overlaps(board, row, column, orientation, ship_length) == False:
                         if orientation == "H":
                             for i in range(column, column + ship_length):
                                 board[row][i] = "X"
@@ -36,7 +36,7 @@ def place_ships(board):
                 print('Place your ship. It has a length of ' + str(ship_length))
                 row, column, orientation = user_input(place_ship)
                 if check_ship_fit(ship_length, row, column, orientation, 'player'):
-                    if ship_overlaps('player', row, column, orientation, ship_length) == False:
+                    if ship_overlaps(board , row, column, orientation, ship_length) == False:
                         if orientation == "H":
                             for i in range(column, column + ship_length):
                                 board[row][i] = "X"
@@ -66,13 +66,13 @@ def ship_overlaps(board, row, column, orientation, ship_length):
     if orientation == "H":
         for i in range(column, column + ship_length):
             if board[row][i] == "X":
-                if board == 'player':
+                if board == PLAYER_BOARD:
                     print("Sorry, your ship can't be placed in this row, because it would overlap with another ship")
                 return True
     else:
         for i in range(row, row + ship_length):
             if board[i][column] == "X":
-                if board == 'player':
+                if board == PLAYER_BOARD:
                     print("Sorry, your ship can't be placed in this column, because it would overlap with another ship")
                 return True
     return False
