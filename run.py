@@ -65,13 +65,13 @@ def ship_overlaps(board, row, column, orientation, ship_length):
     if orientation == "H":
         for i in range(column, column + ship_length):
             if board[row][i] == "X":
-                if board == player:
+                if board == 'player':
                     print("Sorry, your ship can't be placed in this row, because it would overlap with another ship")
                 return True
     else:
         for i in range(row, row + ship_length):
             if board[i][column] == "X":
-                if board == player:
+                if board == 'player':
                     print("Sorry, your ship can't be placed in this column, because it would overlap with another ship")
                 return True
     return False
