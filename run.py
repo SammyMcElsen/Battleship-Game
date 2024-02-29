@@ -21,7 +21,6 @@ def place_ships(board):
             if board == COMPUTER_BOARD:
                 orientation, row, column = random.choice(["H", "V"]), random.randint(0,7), random.randint(0,7)
                 if check_ship_fit(ship_length, row, column, orientation, 'computer'):
-                    print(ship_length, row, column, orientation)
                     if ship_overlaps(board, row, column, orientation, ship_length) == False:
                         if orientation == "H":
                             for i in range(column, column + ship_length):
