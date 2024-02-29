@@ -101,20 +101,22 @@ def user_input(place_ship):
         return row, column, orientation
     else:
         while True:
-                row = input("Guess in which row the opponents ship is (1-8): \n")
+            try: 
+                row = input("Enter the row 1-8 of the ship: ")
                 if row in '12345678':
                     row = int(row) - 1
                     break
-                else:
-                    print('Please enter a valid row number: 1 - 8')
+            except ValueError:
+                print('Enter a valid letter between 1-8')
         while True:
-                column = input("Guess in which column the opponents ship is (A-H) \n").upper()
+            try: 
+                column = input("Enter the column of the ship: ").upper()
                 if column in 'ABCDEFGH':
                     column = LETTERS_TO_NUMBERS[column]
                     break
-                else:
-                    print('Please enter a valid column letter: A - H')
-        return row, column
+            except KeyError:
+                print('Enter a valid letter between A-H')
+        return row, column        
 
 def count_hit_ships(board):
     count = 0
